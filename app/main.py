@@ -3,6 +3,7 @@ from app.serializer import JsonSerializer, XMLSerializer
 from app.print import PrintConsole, PrintReverse
 from app.book import Book
 
+
 def main(
         book: Book,
         commands: list[tuple[str, str]]

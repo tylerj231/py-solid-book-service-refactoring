@@ -1,19 +1,20 @@
 import json
-from abc import  ABC, abstractmethod
-import xml.etree.ElementTree as ET
+from abc import ABC, abstractmethod
+import xml.etree.ElementTree as eT
+from typing import Any
 
 
 class Serializer(ABC):
     @abstractmethod
-    def serialize(self):
+    def serialize(self) -> None:
         pass
 
 
 class JsonSerializer(Serializer):
-    def __init__(self, book):
+    def __init__(self, book: Any) -> None:
         self.book = book
 
-    def serialize(self):
+    def serialize(self) -> Any:
         return json.dumps(
             {
                 "title": self.book.title,
@@ -23,13 +24,13 @@ class JsonSerializer(Serializer):
 
 
 class XMLSerializer(Serializer):
-    def __init__(self, book):
+    def __init__(self, book: Any) -> None:
         self.book = book
 
-    def serialize(self):
-        root = ET.Element("book")
-        title = ET.SubElement(root, "title")
+    def serialize(self) -> Any:
+        root = eT.Element("book")
+        title = eT.SubElement(root, "title")
         title.text = self.book.title
-        content = ET.SubElement(root, "content")
+        content = eT.SubElement(root, "content")
         content.text = self.book.content
-        return ET.tostring(root, encoding="unicode")
+        return eT.tostring(root, encoding="unicode")
