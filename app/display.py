@@ -7,12 +7,14 @@ class Display(ABC):
     def display(self) -> None:
         pass
 
+
 class ConsoleDisplay(Display):
     def __init__(self, book: Any) -> None:
         self.book = book
 
     def display(self) -> None:
         print(self.book.content)
+
 
 class ReverseDisplay(Display):
     def __init__(self, book: Any) -> None:

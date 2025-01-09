@@ -4,7 +4,7 @@ from typing import Any
 
 class Print(ABC):
     @abstractmethod
-    def print(self):
+    def print(self) -> None:
         pass
 
 
@@ -15,6 +15,7 @@ class PrintConsole(Print):
     def print(self) -> None:
         print(f"Printing the book: {self.book.title}...")
         print(self.book.content)
+
 
 class PrintReverse(Print):
     def __init__(self, book: Any) -> None:
